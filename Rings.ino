@@ -346,25 +346,24 @@ void autoRun() {
     // Run the old pattern and save to array
     gPatterns[gOldPatternNumber].pattern();
 
-    for (int i = 0; i < NUM_LEDS; i++) {
-      leds2[i] = leds[i]; // Think there is a built in function for copy, but can't see in docs
-    }
+    memcpy(leds2, leds, sizeof(leds2));
 
     gPatterns[autopgm].pattern();   // Run the new pattern and save to array
 
     for (int i = 0; i < NUM_LEDS; i++) {   // blend oldpattern into main output
-      leds[i] = blend(leds2[i], leds[i], blendamt);   // Blend arrays of LEDs, third value is blend %
+      leds[i] = blend(leds2[i], leds[i], blendamt);
     }
   }
 
   EVERY_N_SECONDS(160) {
     autoPalette = random(0, (gPalletteCount - 1));
-    //  autoPalette++;
-    if (autoPalette >= gPalletteCount) autoPalette = 0;
+    // autoPalette++;
+    if (autoPalette > (gPalletteCount - 1)) autoPalette = 0;
     Serial.println("Next Auto pallette");
     targetPalette = palettes[autoPalette];
   }
-  nblendPaletteTowardPalette(currentPalette, targetPalette, 5);
+  
+  nblendPaletteTowardPalette(currentPalette, targetPalette, 25);
 }
 
 void ringsx() {
