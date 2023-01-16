@@ -159,7 +159,7 @@ PatternAndNameList gPatterns = {
 int gPatternCount = ARRAY_SIZE(gPatterns);
 int gPalletteCount = ARRAY_SIZE(palettes);
 int pgm = 0;
-int autopgm = 2; // random(1, (gPatternCount - 1));
+int autopgm = random(1, (gPatternCount - 1));
 
 
 void setup() {
