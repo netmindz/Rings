@@ -134,19 +134,18 @@ PatternAndNameList gPatterns = {
   { do_Visor_MC, "Visor_MC",DEFAULT_DURATION},
   { do_Visor_Rainbow, "Visor_Rainbow",DEFAULT_DURATION}, 
 //  { do_Visor_Static, "Visor_Static",DEFAULT_DURATION},
-  { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},
+  // { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},  // jumpy, naff xmas
 //  { do_Bounce_Spiral_Static, "Bounce_Spiral_Static",DEFAULT_DURATION},
-  { do_Bounce_Spiral_Rainbow, "Bounce_Spiral_Rainbow",DEFAULT_DURATION},
+  // { do_Bounce_Spiral_Rainbow, "Bounce_Spiral_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas
   { do_Bounce_Spiral_MC, "Bounce_Spiral_MC",DEFAULT_DURATION},
   { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},
-  { do_Ripple_Rainbow, "Ripple_Rainbow",DEFAULT_DURATION},
-  { do_Ripple_MC, "Ripple_MC",DEFAULT_DURATION},
+  // { do_Ripple_Rainbow, "Ripple_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
+  // { do_Ripple_MC, "Ripple_MC",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
 //  { do_Ripple_Static, "Ripple_Static",DEFAULT_DURATION},
 //  { do_Pulse_Rainbow, "Pulse_Rainbow",DEFAULT_DURATION}, bit dull
 //  { do_Pulse_MC, "Pulse_MC",DEFAULT_DURATION},
 //  { do_Pulse_Static, "Pulse_Static",DEFAULT_DURATION},
   { do_Rain_Rainbow, "Rain_Rainbow",DEFAULT_DURATION},
-  { do_Rain_MC, "Rain_MC",DEFAULT_DURATION},
 //  { do_Rain_Static, "Rain_Static",DEFAULT_DURATION},
 //  { do_Special_Xmas, "Special_Xmas",DEFAULT_DURATION},
 //  { do_Special_Special, "Special_Special",DEFAULT_DURATION},
