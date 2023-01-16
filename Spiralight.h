@@ -1995,56 +1995,6 @@ void do_Linear_Rainbow_Gradient_3() {
   }
 
 }
-void do_Spiral_MC_Wave_1() {
-  if (millis() - mil >= 10) {
-    mil = millis();
-    colorIndex = startIndex;
-    for ( int i = 0; i < RING_1_END; i++) {
-      //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
-
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
-
-      colorIndex = colorIndex + 1;  //how fast to advance through palette  3
-    }
-    colorIndex = startIndex;
-    for ( int i = RING_1_END; i < RING_2_END; i++) {
-      //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
-
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
-
-      colorIndex = colorIndex + 42;  //how fast to advance through palette  3
-    }
-    for ( int i = RING_2_END; i < RING_3_END; i++) {
-      //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
-
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
-
-      colorIndex = colorIndex + 21;  //how fast to advance through palette  3
-    }
-
-    for ( int i = RING_3_END; i < RING_4_END; i++) {
-      //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
-
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
-
-      colorIndex = colorIndex + 14;  //how fast to advance through palette  3
-    }
-    colorIndex = startIndex;
-    for ( int i = RING_4_END; i < RING_5_END; i++) {
-      //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
-
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
-
-      colorIndex = colorIndex + 11;  //how fast to advance through palette  3
-    }
-    int wavspeedint = map(anispeed, 0, 100, 2, 30);
-    float wavspeed = wavspeedint / 10.0;
-    startIndex = startIndex + wavspeed;  //how fast to move the palette down the strip
-    if (startIndex > 255) {
-      startIndex = 0;
-    }
-  }//end_every_n
-}
 
 void do_Spiral_MC_Wave_2() {
   if (millis() - mil >= 10) {
@@ -2099,14 +2049,15 @@ void do_Spiral_MC_Wave_3() {
     }
   }//end_every_n
 }
-void do_Spiral_Rainbow_Wave_1() {
+  
+void do_Spiral_Wave_1(CRGBPalette16 palette) {
   if (millis() - mil >= 10) {
     mil = millis();
     colorIndex = startIndex;
     for ( int i = 0; i < RING_1_END; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( palette, colorIndex, 255, LINEARBLEND);
 
       colorIndex = colorIndex + 1;  //how fast to advance through palette  3
     }
@@ -2114,14 +2065,14 @@ void do_Spiral_Rainbow_Wave_1() {
     for ( int i = RING_1_END; i < RING_2_END; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( palette, colorIndex, 255, LINEARBLEND);
 
       colorIndex = colorIndex + 42;  //how fast to advance through palette  3
     }
     for ( int i = RING_2_END; i < RING_3_END; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( palette, colorIndex, 255, LINEARBLEND);
 
       colorIndex = colorIndex + 21;  //how fast to advance through palette  3
     }
@@ -2129,7 +2080,7 @@ void do_Spiral_Rainbow_Wave_1() {
     for ( int i = RING_3_END; i < RING_4_END; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( palette, colorIndex, 255, LINEARBLEND);
 
       colorIndex = colorIndex + 14;  //how fast to advance through palette  3
     }
@@ -2137,7 +2088,7 @@ void do_Spiral_Rainbow_Wave_1() {
     for ( int i = RING_4_END; i < RING_5_END; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( palette, colorIndex, 255, LINEARBLEND);
 
       colorIndex = colorIndex + 11;  //how fast to advance through palette  3
     }
@@ -2149,6 +2100,13 @@ void do_Spiral_Rainbow_Wave_1() {
     }
   }//end_every_n
 }
+void do_Spiral_MC_Wave_1() {
+  do_Spiral_Wave_1(currentPalette);
+}
+void do_Spiral_Rainbow_Wave_1() {
+  do_Spiral_Wave_1(RainbowColors_p);
+}
+
 void do_Spiral_Rainbow_Wave_2() {
   if (millis() - mil >= 10) {
     mil = millis();
