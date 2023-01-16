@@ -79,7 +79,7 @@ int gPaletteCount = ARRAY_SIZE(palettes);
 
 TBlendType    currentBlending =  LINEARBLEND;
 
-#define DEFAULT_DURATION 20
+#define DEFAULT_DURATION 90
 
 typedef void (*Pattern)();
 typedef Pattern PatternList[];
@@ -107,11 +107,11 @@ PatternAndNameList gPatterns = {
   { ringsx, "ringsx",DEFAULT_DURATION},
   { simpleRings, "simpleRings", 300 },
   { randomFlow, "randomFlow", 300 },
-  { do_Spiral_Rainbow_Wave_1, "Spiral_Rainbow_Wave_1",DEFAULT_DURATION},
-  { do_Spiral_Rainbow_Wave_2, "Spiral_Rainbow_Wave_2",DEFAULT_DURATION},
+  { do_Spiral_Rainbow_Wave_1, "Spiral_Rainbow_Wave_1",(DEFAULT_DURATION / 2)},
+  { do_Spiral_Rainbow_Wave_2, "Spiral_Rainbow_Wave_2",(DEFAULT_DURATION / 2)},
 //  { do_Spiral_Rainbow_Wave_3, " _3",DEFAULT_DURATION},
   { do_Spiral_MC_Wave_1, "Spiral_MC_Wave_1",DEFAULT_DURATION},
-  { do_Spiral_MC_Wave_2, "Spiral_MC_Wave_2",DEFAULT_DURATION},
+  { do_Spiral_MC_Wave_2, "Spiral_MC_Wave_2", (DEFAULT_DURATION / 2)},
 //  { do_Spiral_MC_Wave_3, "Spiral_MC_Wave_3",DEFAULT_DURATION},
   { do_Linear_Rainbow_Gradient_1, "Linear_Rainbow_Gradient_1",DEFAULT_DURATION},
 //  { do_Linear_Rainbow_Gradient_2, "Linear_Rainbow_Gradient_2",DEFAULT_DURATION},
@@ -129,7 +129,7 @@ PatternAndNameList gPatterns = {
 //  { do_Marquee_Rainbow, "Marquee_Rainbow",DEFAULT_DURATION},
 //  { do_Marquee_Static, "Marquee_Static",DEFAULT_DURATION},
   { do_Segment_Rainbow, "Segment_Rainbow",DEFAULT_DURATION},
-  { do_Segment_MC, "Segment_MC",DEFAULT_DURATION},
+  { do_Segment_MC, "Segment_MC",(DEFAULT_DURATION / 3)},
 //  { do_Segment_Static, "Segment_Static",DEFAULT_DURATION},
   { do_Visor_MC, "Visor_MC",DEFAULT_DURATION},
   { do_Visor_Rainbow, "Visor_Rainbow",DEFAULT_DURATION}, 
@@ -137,7 +137,7 @@ PatternAndNameList gPatterns = {
   // { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},  // jumpy, naff xmas
 //  { do_Bounce_Spiral_Static, "Bounce_Spiral_Static",DEFAULT_DURATION},
   // { do_Bounce_Spiral_Rainbow, "Bounce_Spiral_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas
-  { do_Bounce_Spiral_MC, "Bounce_Spiral_MC",DEFAULT_DURATION},
+  // { do_Bounce_Spiral_MC, "Bounce_Spiral_MC",DEFAULT_DURATION}, // jumpy, naff xmas
   { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},
   // { do_Ripple_Rainbow, "Ripple_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
   // { do_Ripple_MC, "Ripple_MC",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
@@ -145,7 +145,7 @@ PatternAndNameList gPatterns = {
 //  { do_Pulse_Rainbow, "Pulse_Rainbow",DEFAULT_DURATION}, bit dull
 //  { do_Pulse_MC, "Pulse_MC",DEFAULT_DURATION},
 //  { do_Pulse_Static, "Pulse_Static",DEFAULT_DURATION},
-  { do_Rain_Rainbow, "Rain_Rainbow",DEFAULT_DURATION},
+  { do_Rain_Rainbow, "Rain_Rainbow",(DEFAULT_DURATION / 2)},
 //  { do_Rain_Static, "Rain_Static",DEFAULT_DURATION},
 //  { do_Special_Xmas, "Special_Xmas",DEFAULT_DURATION},
 //  { do_Special_Special, "Special_Special",DEFAULT_DURATION},
@@ -351,7 +351,7 @@ void autoRun() {
     }
   }
 
-  EVERY_N_SECONDS(160) {
+  EVERY_N_SECONDS(145) {
     autoPalette = random(0, (gPalletteCount - 1));
     // autoPalette++;
     if (autoPalette > (gPalletteCount - 1)) autoPalette = 0;
