@@ -66,6 +66,10 @@ uint16_t secondAngle = 0;
 
 void updateClock()
 {
+  if(WiFi.status() == WL_CONNECTED) {
+    timeClient.update();
+  }
+
   hourAngle = timeClient.getHours();
   if (hourAngle >= 12)
     hourAngle -= 12;

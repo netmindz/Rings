@@ -308,9 +308,6 @@ void loop() {
   // Update Leds
   FastLED.show();
 
-  if(WiFi.status() == WL_CONNECTED) {
-    timeClient.update();
-  }
 }
 
 uint16_t crossct = 255;
