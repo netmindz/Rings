@@ -2003,7 +2003,7 @@ void do_Spiral_MC_Wave_2() {
     for ( int i = 0; i < NUM_LEDS; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( currentPalette, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( currentPalette, colorIndex, 200, LINEARBLEND);
 
       colorIndex = colorIndex + 4
                    ;  //how fast to advance through palette  3

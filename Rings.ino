@@ -363,7 +363,7 @@ void autoRun() {
 
 void ringsx() {
   for (int r = 0; r < RINGS; r++) {
-    setRing(r, ColorFromPalette(currentPalette, hue[r], 255, currentBlending));
+    setRing(r, ColorFromPalette(currentPalette, hue[r], 200, currentBlending));
   }
   EVERY_N_MILLISECONDS_I(ringx, SPEED) {
     if (INWARD) {
@@ -384,7 +384,7 @@ void ringsx() {
 int j;
 void simpleRings() {
   for (int r = 0; r < RINGS; r++) {
-    setRing(r, ColorFromPalette(currentPalette, j + (r * JUMP), 255, currentBlending));
+    setRing(r, ColorFromPalette(currentPalette, j + (r * JUMP), 200, currentBlending));
   }
   EVERY_N_MILLISECONDS_I(simpleRings, SPEED) {
     j += JUMP;
