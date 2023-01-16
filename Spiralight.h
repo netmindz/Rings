@@ -1852,10 +1852,7 @@ void do_Linear_MC_Gradient_2() {
   }
 
 }
-void do_Linear_MC_Gradient_1() {
-  do_Linear_MC_Gradient(90);
-}
-do_Linear_MC_Gradient(int c) {
+void do_Linear_MC_Gradient(int c) {
   if (millis() - mil >= 10) {
     mil = millis();
     colorIndex = startIndex;
@@ -1890,6 +1887,9 @@ do_Linear_MC_Gradient(int c) {
     }
   }
 
+}
+void do_Linear_MC_Gradient_1() {
+  do_Linear_MC_Gradient(90);
 }
 void do_Linear_MC_Gradient_3() {
   do_Linear_MC_Gradient(180);
