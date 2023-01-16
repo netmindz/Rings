@@ -369,18 +369,19 @@ void ringsx() {
   for (int r = 0; r < RINGS; r++) {
     setRing(r, ColorFromPalette(currentPalette, hue[r], 255, currentBlending));
   }
-  delay(SPEED);
-  if (INWARD) {
-    for (int r = 0; r < RINGS; r++) {
-      hue[(r - 1)] = hue[r]; // set ring one less to that of the outer
+  EVERY_N_MILLISECONDS_I(ringx, SPEED) {
+    if (INWARD) {
+      for (int r = 0; r < RINGS; r++) {
+        hue[(r - 1)] = hue[r]; // set ring one less to that of the outer
+      }
+      hue[(RINGS - 1)] += JUMP;
     }
-    hue[(RINGS - 1)] += JUMP;
-  }
-  else {
-    for (int r = (RINGS - 1); r >= 1; r--) {
-      hue[r] = hue[(r - 1)]; // set this ruing based on the inner
+    else {
+      for (int r = (RINGS - 1); r >= 1; r--) {
+        hue[r] = hue[(r - 1)]; // set this ruing based on the inner
+      }
+      hue[0] += JUMP;
     }
-    hue[0] += JUMP;
   }
 }
 
@@ -389,20 +390,22 @@ void simpleRings() {
   for (int r = 0; r < RINGS; r++) {
     setRing(r, ColorFromPalette(currentPalette, j + (r * JUMP), 255, currentBlending));
   }
-  j += JUMP;
-  delay(SPEED);
+  EVERY_N_MILLISECONDS_I(simpleRings, SPEED) {
+    j += JUMP;
+  }
 }
 
 
 void randomFlow() {
-  hue[0] = random(0, 255);
   for (int r = 0; r < RINGS; r++) {
     setRing(r, CHSV(hue[r], 255, 255));
   }
-  for (int r = (RINGS - 1); r >= 1; r--) {
-    hue[r] = hue[(r - 1)]; // set this ruing based on the inner
+  EVERY_N_MILLISECONDS_I(randomFlow, SPEED) {
+    hue[0] = random(0, 255);
+    for (int r = (RINGS - 1); r >= 1; r--) {
+      hue[r] = hue[(r - 1)]; // set this ruing based on the inner
+    }
   }
-  delay(SPEED);
 }
 
 void audioRings() {

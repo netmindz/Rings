@@ -1921,10 +1921,8 @@ void do_Linear_Rainbow_Gradient_1() {
       leds[i] = ColorFromPalette( RainbowColors_p, val + (180 - colorIndex), 255, LINEARBLEND);
     }
     colorIndex += 28;
-    FastLED.show();
     int wavspeedint = map(anispeed, 0, 100, 2, 30);
     float wavspeed = wavspeedint / 10.0;
-    FastLED.show();
     startIndex = startIndex + wavspeed;  //how fast to move the palette down the strip
     if (startIndex > 255) {
       startIndex = 0;
