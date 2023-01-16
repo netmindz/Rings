@@ -69,9 +69,9 @@ void randomFlow();
 bool newReading;
 
 #include "audio.h"
+#include "Disk.h"
 #include "Spiralight.h"
 #include "F_lying_circular.h"
-#include "Disk.h"
 #include "Clock.h"
 
 CRGBPalette16 palettes[] = {RainbowColors_p, RainbowStripeColors_p, RainbowStripeColors_p, CloudColors_p, PartyColors_p, redblue_gp, redblue1_gp };
