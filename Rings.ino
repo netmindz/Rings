@@ -110,7 +110,7 @@ PatternAndNameList gPatterns = {
   { do_Spiral_Rainbow_Wave_1, "Spiral_Rainbow_Wave_1",(DEFAULT_DURATION / 2)},
   { do_Spiral_Rainbow_Wave_2, "Spiral_Rainbow_Wave_2",(DEFAULT_DURATION / 2)},
 //  { do_Spiral_Rainbow_Wave_3, " _3",DEFAULT_DURATION},
-  { do_Spiral_MC_Wave_1, "Spiral_MC_Wave_1",DEFAULT_DURATION},
+  { do_Spiral_MC_Wave_1, "Spiral_MC_Wave_1",(DEFAULT_DURATION / 2)},
   { do_Spiral_MC_Wave_2, "Spiral_MC_Wave_2", (DEFAULT_DURATION / 2)},
 //  { do_Spiral_MC_Wave_3, "Spiral_MC_Wave_3",DEFAULT_DURATION},
   { do_Linear_Rainbow_Gradient_1, "Linear_Rainbow_Gradient_1",DEFAULT_DURATION},
@@ -128,17 +128,16 @@ PatternAndNameList gPatterns = {
 //  { do_Marquee_MC, "Marquee_MC",DEFAULT_DURATION},
 //  { do_Marquee_Rainbow, "Marquee_Rainbow",DEFAULT_DURATION},
 //  { do_Marquee_Static, "Marquee_Static",DEFAULT_DURATION},
-  { do_Segment_Rainbow, "Segment_Rainbow",DEFAULT_DURATION},
+  { do_Segment_Rainbow, "Segment_Rainbow",(DEFAULT_DURATION / 2)},
   { do_Segment_MC, "Segment_MC",(DEFAULT_DURATION / 3)},
 //  { do_Segment_Static, "Segment_Static",DEFAULT_DURATION},
-  { do_Visor_MC, "Visor_MC",DEFAULT_DURATION},
-  { do_Visor_Rainbow, "Visor_Rainbow",DEFAULT_DURATION}, 
+  { do_Visor_MC, "Visor_MC",(DEFAULT_DURATION / 2)},
+  { do_Visor_Rainbow, "Visor_Rainbow",(DEFAULT_DURATION / 3)}, // bit naff
 //  { do_Visor_Static, "Visor_Static",DEFAULT_DURATION},
-  // { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},  // jumpy, naff xmas
 //  { do_Bounce_Spiral_Static, "Bounce_Spiral_Static",DEFAULT_DURATION},
   // { do_Bounce_Spiral_Rainbow, "Bounce_Spiral_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas
   // { do_Bounce_Spiral_MC, "Bounce_Spiral_MC",DEFAULT_DURATION}, // jumpy, naff xmas
-  { do_Bounce_Linear_MC, "Bounce_Linear_MC",DEFAULT_DURATION},
+  { do_Bounce_Linear_MC, "Bounce_Linear_MC",(DEFAULT_DURATION / 3)}, // bit naff
   // { do_Ripple_Rainbow, "Ripple_Rainbow",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
   // { do_Ripple_MC, "Ripple_MC",DEFAULT_DURATION}, // jumpy, naff xmas, just one ring at a time
 //  { do_Ripple_Static, "Ripple_Static",DEFAULT_DURATION},
