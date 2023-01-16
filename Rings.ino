@@ -168,7 +168,7 @@ void setup() {
 
   FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS); //.setCorrection(TypicalSMD5050);
   FastLED.setBrightness( BRIGHTNESS );
-  FastLED.setMaxPowerInVoltsAndMilliamps(5, 500); 
+  FastLED.setMaxPowerInVoltsAndMilliamps(5, 500); //  Good way to keep max on total brightness, no matter the pattern
 
   leds[0] = CRGB::Blue;
   FastLED.show();

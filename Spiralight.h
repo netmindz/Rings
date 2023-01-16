@@ -2156,7 +2156,7 @@ void do_Spiral_Rainbow_Wave_2() {
     for ( int i = 0; i < NUM_LEDS; i++) {
       //ColorFromPalette( paletteName, colorIndex[0-255], brightness[0-255], blendType[NOBLEND or LINEARBLEND])
 
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 200, LINEARBLEND);
 
       colorIndex = colorIndex + 4
                    ;  //how fast to advance through palette  3
@@ -2174,7 +2174,7 @@ void do_Spiral_Rainbow_Wave_3() {
     mil = millis();
     colorIndex = startIndex;
     for ( int i = 0; i < RING_1_END; i++) {
-      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 255, LINEARBLEND);
+      leds[i] = ColorFromPalette( RainbowColors_p, colorIndex, 200, LINEARBLEND);
     }
     colorIndex = colorIndex + 51;  //how fast to advance through palette  3
     for ( int i = RING_1_END; i < RING_2_END; i++) {
