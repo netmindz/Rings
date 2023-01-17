@@ -977,7 +977,7 @@ void do_Bounce_Linear_MC() {
         Bouncepos = 0;
         Bouncephase = 1;
         FastLED.clear();
-        FastLED.show();
+        // FastLED.show();
       }
     }
 
@@ -1165,7 +1165,7 @@ void do_Bounce_Linear_Rainbow() {
         Bouncepos = 0;
         Bouncephase = 1;
         FastLED.clear();
-        FastLED.show();
+        // FastLED.show();
       }
     }
   }
@@ -1352,7 +1352,7 @@ void do_Bounce_Linear_Static() {
         Bouncepos = 0;
         Bouncephase = 1;
         FastLED.clear();
-        FastLED.show();
+        // FastLED.show();
       }
     }
   }
@@ -1983,11 +1983,15 @@ void do_Linear_Rainbow_Gradient_3() {
       float val = ((((12 * cos(((180 + ((i - 37) * (360.0 / 24.0))) * 71) / 4068 )) + 12) * 100) / 24) * 2.55    ;
       leds[i] = ColorFromPalette( RainbowColors_p, val + (180 - colorIndex), 255, LINEARBLEND);
     }
+    // for( int r = 1 ; r < RINGS; r++) {
+    //   for(int i = ringMap[r][0]; i < ringMap[r][1]; i++) {
+    //     float val = (((((r * 3) * cos(((180 + ((i - ringMap[r][0]) * (360.0 / 6.0))) * 71) / 4068 )) + 12) * 100) / 24) * 2.55   ;
+    //     leds[i] = ColorFromPalette( RainbowColors_p, val + (180 - colorIndex), 255, LINEARBLEND);
+    //   }
+    // }
     colorIndex += 28;
-    FastLED.show();
     int wavspeedint = map(anispeed, 0, 100, 2, 30);
     float wavspeed = wavspeedint / 10.0;
-    FastLED.show();
     startIndex = startIndex + wavspeed;  //how fast to move the palette down the strip
     if (startIndex > 255) {
       startIndex = 0;

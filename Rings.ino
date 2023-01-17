@@ -51,6 +51,8 @@ WLEDSync sync;
 CRGB leds[NUM_LEDS];  // main data
 // Crossfade based off code by Preyy - https://www.reddit.com/r/FastLED/comments/fa0p0i/i_made_a_more_versatile_crossfader_video_code/
 CRGB leds2[NUM_LEDS]; // temp store used during crossfade
+CRGB leds3[NUM_LEDS]; // temp store used during crossfade
+CRGB leds4[NUM_LEDS]; // temp store used during crossfade
 
 int hue[RINGS];
 
@@ -314,39 +316,53 @@ int gOldPatternNumber;
 void autoRun() {
 
   if (crossct >= 255) {
-    // Run pattern as normal
-    gPatterns[autopgm].pattern();
 
     EVERY_N_SECONDS_I(autoPattern, gPatterns[autopgm].duration) { // 90
       gOldPatternNumber = autopgm;
       autopgm = random(1, (gPatternCount - 1));
       //autopgm++;
-      if (autopgm >= gPatternCount) autopgm = 1;
+      if (autopgm > (gPatternCount - 1)) autopgm = 1;
       Serial.print("Next Auto pattern: ");
       Serial.println(gPatterns[autopgm].name);
+ // DISABLE cross-fade for now
       crossct = 0;  // reset the blend amount
-      FastLED.clear();
+      // clear leds ready for new pattern
+      fill_solid(leds2, NUM_LEDS, CRGB::Black);
+      fill_solid(leds3, NUM_LEDS, CRGB::Black);
+      fill_solid(leds4, NUM_LEDS, CRGB::Black);
     }
+    // Run pattern as normal
+    gPatterns[autopgm].pattern();
 
   }
   else  {
-    EVERY_N_MILLIS(100) {
-      crossct += 10;         // higher increase faster xfade
+    EVERY_N_MILLIS(30) {
+      crossct += 2;         // higher increase faster xfade
       if (crossct > 255) { // overflow prevention
         crossct = 255;
       }
     }
     uint8_t blendamt = crossct;
 
+    memcpy(leds, leds3, sizeof(leds)); // restore state from last run
     // Run the old pattern and save to array
     gPatterns[gOldPatternNumber].pattern();
 
     memcpy(leds2, leds, sizeof(leds2));
+    memcpy(leds3, leds, sizeof(leds3));
+    // fade old pattern out
+    nscale8_video(leds2, NUM_LEDS, map(blendamt, 0, 255, 255, 0));
 
+    memcpy(leds, leds4, sizeof(leds)); // restore state from last run
     gPatterns[autopgm].pattern();   // Run the new pattern and save to array
+    memcpy(leds4, leds, sizeof(leds4));
+    nscale8_video(leds, NUM_LEDS, blendamt);
 
     for (int i = 0; i < NUM_LEDS; i++) {   // blend oldpattern into main output
-      leds[i] = blend(leds2[i], leds[i], blendamt);
+      leds[i] = blend(leds2[i], leds[i], 125); // map(blendamt, 0, 255, 125, 255)); // blendamt doesn't work, possinly try inverting params?
+    }
+    EVERY_N_MILLIS(500) {
+      Serial.printf("gOldPatternNumber=%u, autopgm=%u, blendamt=%u\n", gOldPatternNumber, autopgm, blendamt);
     }
   }
 
